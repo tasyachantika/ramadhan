@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadan Tracker - My Spiritual Journey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <h1>Ramadan Journey</h1>
+            <p>Track your spirit, one day at a time.</p>
+            <button id="settingsBtn" class="glass-btn"><i class="fas fa-cog"></i> Pengaturan</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="stats" class="glass-card stats-grid">
+            <div class="stat-item">
+                <span id="totalFasting">0</span>
+                <p>Puasa Selesai</p>
+            </div>
+            <div class="stat-item progress-container">
+                <div class="circular-progress">
+                    <div class="value-container">0%</div>
+                </div>
+                <p>Progres Ramadan</p>
+            </div>
+            <div class="stat-item">
+                <span id="daysRemaining">30</span>
+                <p>Hari Tersisa</p>
+            </div>
+        </section>
+
+        <section id="trackerList" class="tracker-container">
+            <!-- Cards will be generated via JS -->
+        </section>
+    </main>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content glass-card">
+            <span class="close">&times;</span>
+            <h2>Pengaturan Ramadan</h2>
+            <div class="input-group">
+                <label for="startDate">Tanggal 1 Ramadan:</label>
+                <input type="date" id="startDate" class="glass-input">
+            </div>
+            <button id="saveSettings" class="primary-btn">Simpan & Reset</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

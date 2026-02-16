@@ -1,0 +1,344 @@
+:root {
+    --primary: #ffd700;
+    --secondary: #ff85a2;
+    --bg-dark: #0f0c29;
+    --bg-gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    --glass: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --text-light: #ffffff;
+    --text-dim: #b0b0b0;
+    --accent: #ff00ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    color: var(--text-light);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.background-blobs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.blob {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: move 20s infinite alternate;
+}
+
+.blob-1 { background: #302b63; top: -10%; left: -10%; }
+.blob-2 { background: #ff85a2; bottom: -10%; right: -10%; animation-delay: -5s; }
+.blob-3 { background: #ffd700; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.1; }
+
+@keyframes move {
+    from { transform: translate(0, 0); }
+    to { transform: translate(100px, 100px); }
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 40px 0;
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--primary);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    margin-bottom: 10px;
+}
+
+header p {
+    color: var(--text-dim);
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.stats-grid {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.stat-item span {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.stat-item p {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+}
+
+.circular-progress {
+    position: relative;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background: conic-gradient(var(--primary) 0deg, var(--glass-border) 0deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.circular-progress::before {
+    content: "";
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #1a1a2e;
+}
+
+.value-container {
+    position: relative;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.tracker-container {
+    display: grid;
+    gap: 20px;
+}
+
+.day-card {
+    transition: transform 0.3s ease;
+}
+
+.day-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 10px;
+}
+
+.day-title h3 {
+    font-size: 1.2rem;
+    color: var(--primary);
+}
+
+.day-date {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+}
+
+.track-section {
+    margin-bottom: 15px;
+}
+
+.track-section h4 {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    color: var(--secondary);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.check-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.check-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.check-item input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--primary);
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    transition: 0.2s;
+}
+
+.check-item input[type="checkbox"]:checked {
+    background: var(--primary);
+}
+
+.check-item input[type="checkbox"]:checked::after {
+    content: "\f00c";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #000;
+    font-size: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.haid-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 133, 162, 0.1);
+    padding: 8px 12px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.haid-toggle label {
+    font-size: 0.85rem;
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: var(--glass-border);
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider { background-color: var(--secondary); }
+input:checked + .slider:before { transform: translateX(20px); }
+
+/* Buttons & Inputs */
+.glass-btn {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: 0.3s;
+}
+
+.glass-btn:hover { background: var(--glass-border); }
+
+.primary-btn {
+    background: linear-gradient(45deg, var(--primary), #ffa500);
+    border: none;
+    color: #000;
+    font-weight: 700;
+    padding: 12px 25px;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.glass-input {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    width: 400px;
+}
+
+.close {
+    position: absolute;
+    right: 20px; top: 15px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+@media (max-width: 480px) {
+    header h1 { font-size: 2rem; }
+    .check-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.day-card.haid-active {
+    opacity: 0.6;
+    border-color: var(--secondary);
+}
